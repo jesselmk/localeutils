@@ -3,7 +3,7 @@ jdk:
   - openjdk8
 
 install:
-  - TERM=dumb ./chmod +x gradlew
+  - TERM=dumb chmod +x gradlew
   - TERM=dumb ./gradlew assemble
 
 script:
