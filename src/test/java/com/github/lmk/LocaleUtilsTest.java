@@ -35,40 +35,41 @@ public class LocaleUtilsTest {
     public void should_throw_exception_when_length_is_less_than_2() {
         // given
         // when
-        // then
         localeUtils.toLocale("b");
+        // then
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void should_throw_exception_when_containing_sharp() {
         // given
         // when
-        // then
         localeUtils.toLocale("#a");
+        // then
+
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void should_throw_exception_when_starting_with_underline_and_length_is_less_than_three() {
         // given
         // when
-        // then
         localeUtils.toLocale("_a");
+        // then
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void should_throw_exception_when_starting_with_underline_and_second_letter_is_lowercase() {
         // given
         // when
-        // then
         localeUtils.toLocale("_ab");
+        // then
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void should_throw_exception_when_starting_with_underline_and_third_letter_is_lowercase() {
         // given
         // when
-        // then
         localeUtils.toLocale("_Ab");
+        // then
     }
 
     @Test
@@ -84,8 +85,8 @@ public class LocaleUtilsTest {
     public void should_throw_exception_when_starting_with_underline_and_length_is_less_than_five() {
         // given
         // when
-        // then
         localeUtils.toLocale("_ABc");
+        // then
     }
 
 
@@ -93,8 +94,8 @@ public class LocaleUtilsTest {
     public void should_throw_exception_when_starting_with_underline_and_fourth_letter_is_not_underline() {
         // given
         // when
-        // then
         localeUtils.toLocale("_ABctc");
+        // then
     }
 
     @Test
@@ -164,33 +165,89 @@ public class LocaleUtilsTest {
     public void should_throw_exception_when_language_is_not_iso639() {
         // given
         // when
-        // then
         localeUtils.toLocale("_234");
+        // then
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void should_throw_exception_when__country_is_not_3166() {
         // given
         // when
-        // then
         localeUtils.toLocale("en_En");
+        // then
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void should_throw_exception_when_country_is_empty() {
         // given
         // when
-        // then
         localeUtils.toLocale("en_");
+        // then
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void should_throw_exception_when_language_is_empty() {
         // given
         // when
-        // then
         localeUtils.toLocale("_12_45");
+        // then
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_when_has_four_part() {
+        // given
+        // when
+        localeUtils.toLocale("en_123_456_789");
+        // then
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_when_language_has_four_letter() {
+        // given
+        // when
+        localeUtils.toLocale("engt_ABC");
+        // then
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_when_country_has_three_letter() {
+        // given
+        // when
+        localeUtils.toLocale("eng_ABC");
+        // then
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_when_country_has_two_nubers() {
+        // given
+        // when
+        localeUtils.toLocale("eng_12");
+        // then
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_when_languate_is_not_iso639_and_has_three_parts() {
+        // given
+        // when
+        localeUtils.toLocale("engt_123_123");
+        // then
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_when_country_is_not_right_and_has_three_parts() {
+        // given
+        // when
+        localeUtils.toLocale("eng_a_123");
+        // then
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_when_variant_is_empty_and_has_three_parts() {
+        // given
+        // when
+        localeUtils.toLocale("eng_123_");
+        // then
+    }
+
 
 
 
