@@ -1,6 +1,8 @@
 language: java
 jdk:
   - openjdk8
+  
+    
 before_install:
   - chmod +x gradlew
 
@@ -11,4 +13,6 @@ script:
   - TERM=dumb ./gradlew check -i
 
 after_success:
-  - ./gradlew jacocoTestReport codecov
+  - ./gradlew jacocoTestReport
+  - codecov
+  - bash <(curl -s https://codecov.io/bash) -t 3612a4bb-6a1f-4ed3-bd6e-d17f17601166
